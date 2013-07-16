@@ -14,6 +14,7 @@
   "license": "BSD",
   "devDependencies": {
     "mocha": "~1.12.0",
-    "docco": "~0.6.2"
+    "docco": "~0.6.2",
+    "chai": "~1.7.2"
   }
 }
