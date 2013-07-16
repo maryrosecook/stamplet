@@ -1,0 +1,3 @@
+#Stamplet
+
+Genrate random JSON
