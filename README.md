@@ -2,17 +2,15 @@
 
 Stamplet's job is to take a piece of specially-templatted json like this:
 
-```
+```javascript
 {
   "users{{repeat(3)}}":[
     { "someString": "{{ randomString 5 }}" }
   ]
 }
 ```
-(*Note: passed params and options are not yet implemented*)
-
 and return this:
-```
+```javascript
 {
   "users":[
     { someString: "alske" },
@@ -28,16 +26,16 @@ stamplet sees an embedded template, it looks up a generator or interpolater
 function with that name and then calls that funciton to transform the json.
 
 ### Genenerators and Interators
-In short, generators operate on the overall structure of an object and are found
+In short, generators operate on overall structure and are found
 in the keys of a json object. Interpolaters fill in the values at the "leaves"
-of an object and are embedded in the values of an object.
+of a structure and are embedded in the values of an object.
 
 ### Customization
 Stamplet is designed to be extended with custom generators and interpolaters:
 
-```
+```javascript
 stamplet.addGenerator('myGenerator', function(node){
-  // manipulate the node
+  // return the new object or array
 });
 
 stamplet.addInterpolater('myInterpolater', function(value){
@@ -45,9 +43,11 @@ stamplet.addInterpolater('myInterpolater', function(value){
 });
 ```
 ### Installation
-``` git clone https://github.com/tjlahr/stamplet.git ```
-``` cd stamplet ```
-``` npm install ```
+```
+git clone https://github.com/tjlahr/stamplet.git
+cd stamplet
+npm install
+```
 
 ### Running Examples
 ``` node example.js ```
