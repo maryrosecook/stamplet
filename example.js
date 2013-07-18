@@ -1,24 +1,24 @@
-var stamplet = require('./index.js');
+var stamplet = require('./index');
 
-stamplet.addInterpolater("helloWorld", function(){
-    return "hello world";
-});
-
-stamplet.addGenerator('repeatTenTimes', function(array){
+stamplet.addGenerator('repeatThreeTimes', function(array){
     var first = array.shift();
 
-    var result = [];
+    return [first, first, first];
+});
 
-    for(var i=0; i < 10; i++){
-        result.push(first);
-    }
+stamplet.addInterpolater('randomSeason', function(value){
+    var seasons = ["Spring", "Summer", "Winter", "Fall"];
 
-    return result;
+    return seasons[Math.floor(Math.random() * seasons.length)];
 });
 
 var obj = {
-    a: "{{randomString}}",
-    "b{{repeatTenTimes}}": [{ string: "{{randomString}}"}]
+    "users{{repeatThreeTimes}}":[{ 
+        favoriteSeason: "{{ randomSeason }}",
+        leastFavoriteSeason: "{{ randomSeason }}",
+        string: "{{ randomString }}" // built in interpolater... only one right now
+    }]
 }
+
 
 console.log(stamplet.generate(JSON.stringify(obj)));
