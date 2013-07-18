@@ -9,6 +9,7 @@ Stamplet's job is to take a piece of specially-templatted json like this:
   ]
 }
 ```
+(*Note: passed params and options are not yet implemented*)
 
 and return this:
 ```
@@ -20,6 +21,7 @@ and return this:
   ]
 }
 ```
+
 ### Templates
 Templates use a double curly bracket syntax like Mustache or Handlerbars. When
 stamplet sees an embedded template, it looks up a generator or interpolater
@@ -42,12 +44,17 @@ stamplet.addInterpolater('myInterpolater', function(value){
   // return new value
 });
 ```
+### Installation
+``` git clone https://github.com/tjlahr/stamplet.git ```
+``` cd stamplet ```
+``` npm install ```
+
+### Running Examples
+``` node example.js ```
 
 ### Running Tests
-``` mocha test ```
-or
 ``` npm test ```
 
 ### Generating Documentation
-``` docco lib/*.js ```
+``` docco script/*.js ```
 (html documentation will be exported to docs)
