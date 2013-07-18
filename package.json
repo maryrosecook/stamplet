@@ -1,7 +1,8 @@
 {
   "name": "stamplet",
-  "version": "0.0.0",
-  "description": "ERROR: No README.md file found!",
+  "author": "Thomas Lahr <tjlahr@gmail.com>",
+  "version": "0.1.0",
+  "description": "a fake json generator",
   "main": "index.js",
   "scripts": {
     "test": "mocha -R spec"
