@@ -19,6 +19,11 @@ describe('stamplet', function(){
             assert.equal(stamplet.generate(object), JSON.stringify(object));
         });
 
+        it('should not output JSON if `false', function() {
+            var object = {"string":"string","number":123};
+            assert.deepEqual(stamplet.generate(object, { json : false }), object);
+        });
+
         it("should output json using generateJSON", function(){
             var object = {"string":"string","number":123};
             assert.equal(stamplet.generateJSON(object), JSON.stringify(object));
