@@ -15,30 +15,35 @@ describe('stamplet', function(){
         });
 
         it("should output identical json if no template tags are used", function(){
-            var testJSON = '{"string":"string","number":123}';
-            assert.equal(stamplet.generate(testJSON), testJSON);
+            var object = {"string":"string","number":123};
+            assert.equal(stamplet.generate(object), JSON.stringify(object));
+        });
+
+        it("should output json using generateJSON", function(){
+            var object = {"string":"string","number":123};
+            assert.equal(stamplet.generateJSON(object), JSON.stringify(object));
         });
 
         describe('using interpolaters', function(){
             it("should interpolate {{helloWorld}} in a simple object", function(){
-                var inputJSON = '{"string":"{{helloWorld}}","number":123}',
-                    outputJSON = '{"string":"hello world","number":123}';
+                var input = {"string":"{{helloWorld}}","number":123},
+                    output = {"string":"hello world","number":123};
 
-                assert.equal(stamplet.generate(inputJSON), outputJSON);
+                assert.equal(stamplet.generate(input), JSON.stringify(output));
             });
 
             it("should overwrite only what's inside of the template delimiter", function(){
                 var input = { a: "This is an intact {{helloWorld}} sentence." },
                     output = { a: "This is an intact hello world sentence." };
                 
-                assert.equal(stamplet.generate(JSON.stringify(input)), JSON.stringify(output));
+                assert.equal(stamplet.generate(input), JSON.stringify(output));
             });
 
             it("should be able to handle extra white space in the template", function(){
                 var input = { a: "{{       helloWorld    }}" },
                     output = { a: "hello world" };
                 
-                assert.equal(stamplet.generate(JSON.stringify(input)), JSON.stringify(output));
+                assert.equal(stamplet.generate(input), JSON.stringify(output));
             });
 
             it("should interpolate {{helloWorld}} on a more deeply-nested object", function(){
@@ -60,14 +65,14 @@ describe('stamplet', function(){
                     }
                 }
 
-                assert.equal(stamplet.generate(JSON.stringify(input)), JSON.stringify(output));
+                assert.equal(stamplet.generate(input), JSON.stringify(output));
             });
 
             it("should interpolate {{helloWorld}} properly while traversing arrays", function(){
                 var input = [1, "{{helloWorld}}", 2];
                 var output = [1, "hello world", 2];
 
-                assert.equal(stamplet.generate(JSON.stringify(input)), JSON.stringify(output));
+                assert.equal(stamplet.generate(input), JSON.stringify(output));
             });
         });
 
@@ -86,7 +91,7 @@ describe('stamplet', function(){
 
                 debugger;
 
-                assert.equal(stamplet.generate(JSON.stringify(input)), JSON.stringify(output));
+                assert.equal(stamplet.generate(input), JSON.stringify(output));
             });
         });
     });
