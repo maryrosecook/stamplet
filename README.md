@@ -5,7 +5,7 @@ Stamplet's job is to take a piece of specially-templatted json like this:
 ```javascript
 {
   "users{{repeat(3)}}":[
-    { "someString": "{{ randomString 5 }}" }
+    { "someString": "{{ randomString }}" }
   ]
 }
 ```
