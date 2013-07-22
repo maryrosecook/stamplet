@@ -1,5 +1,6 @@
 var assert = require('chai').assert;
-    traverse = require('../lib/traverse');
+    traverse = require('../lib/traverse'),
+    utils = require('../lib/utils');
 
 describe('traverse', function(){
     it('should return a copy of whatever object is passed in', function(){
@@ -183,7 +184,7 @@ describe('traverse', function(){
                             string: "string",
                             number: 123
                         }
-                        obj.renameProperty('e', 'newkey');
+                        utils.renameProperty(obj, 'e', 'newkey');
                     }
                 }
             });
