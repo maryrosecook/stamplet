@@ -25,7 +25,7 @@ Templates use a double curly bracket syntax like Mustache or Handlerbars. When
 stamplet sees an embedded template, it looks up a generator or interpolater
 function with that name and then calls that funciton to transform the json.
 
-### Genenerators and Interators
+### Genenerators and Interpolators
 In short, generators operate on overall structure and are found
 in the keys of a json object. Interpolaters fill in the values at the "leaves"
 of a structure and are embedded in the values of an object.
