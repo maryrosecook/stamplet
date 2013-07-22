@@ -40,14 +40,14 @@ describe('stamplet', function(){
             it("should overwrite only what's inside of the template delimiter", function(){
                 var input = { a: "This is an intact {{helloWorld}} sentence." },
                     output = { a: "This is an intact hello world sentence." };
-                
+
                 assert.equal(stamplet.generate(input), JSON.stringify(output));
             });
 
             it("should be able to handle extra white space in the template", function(){
                 var input = { a: "{{       helloWorld    }}" },
                     output = { a: "hello world" };
-                
+
                 assert.equal(stamplet.generate(input), JSON.stringify(output));
             });
 

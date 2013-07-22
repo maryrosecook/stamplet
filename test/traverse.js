@@ -15,7 +15,7 @@ describe('traverse', function(){
         it('should run a callback for every node that it traverses', function(){
             var counter = 0,
                 fiveNodes = {
-                    a: 1, 
+                    a: 1,
                     b: 2,
                     c: {
                         d: 3,
@@ -137,7 +137,7 @@ describe('traverse', function(){
                 keyHandler: function(obj){
                     assert.deepEqual(obj,input);
                 }
-            }); 
+            });
         })
 
         it('should be able to completely change a node', function(){
@@ -153,7 +153,7 @@ describe('traverse', function(){
         });
 
         it('should allow you to mutate deeply nested objects', function(){
-            var input = { 
+            var input = {
                 a: "string",
                 b: {
                     c: "string",
@@ -164,7 +164,7 @@ describe('traverse', function(){
                 }
             };
 
-            var expected = { 
+            var expected = {
                 a: "string",
                 b: {
                     c: "string",
